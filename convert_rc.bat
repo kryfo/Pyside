@@ -1,0 +1,1 @@
+C:\Python27\Lib\site-packages\PySide\pyside-rcc.exe -o E:\k\k_pyside\fproject\icon\krc_rc.py E:\k\k_pyside\fproject\krc.qrc

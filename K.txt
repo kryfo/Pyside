@@ -1,0 +1,34 @@
+def dragEnterEvent(self,event):
+	event.acceptProposedAction()
+
+def dropEvent(self,event):
+	super(MapConvert,self).dropEvent(event)
+
+
+def getOutDir(self):
+	files= QtGui.QfileDialog.getExistingDirectory(parent=self,caption='选择文件',directory=QtCore.QDir.currentPath(),filter='',options=QtGui.QFileDialog.ShowDirsOnly)
+
+
+
+def addFiles(self):
+	files= QtGui.QfileDialog.getOpenFileNames(parent=self,caption='选择文件',directory=QtCore.QDir.currentPath(),filter='',options=QtGui.QFileDialog.ReadOnly)
+	tableWidget = self.ui.tableWidget
+
+	for file in files:
+		fileInfo=QtCore.QFileInfo(file)
+
+		name = fileInfo.compleBaseName() +"."+fileInfo.suffix()
+		path = fileInfo.absolutePath()
+		size = "{:.3f}M".format(fileInfo.size()/1024/1024)
+
+		nameItem=QtGui.QTabWidgetItem(name)
+		pathItem=QtGui.QTabWidgetItem(path)
+		sizeItem=QtGui.QTabWidgetItem(str(size)+"M")
+
+		tableWidget.insertRow(0)
+		tableWidget.setItem(0,0,nameItem)
+		tableWidget.setItem(0,1,nameItem)
+		tableWidget.setItem(0,2,nameItem)
+
+
+
